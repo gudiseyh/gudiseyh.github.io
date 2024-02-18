@@ -14,19 +14,19 @@
 
 ## Repository Information
 
-Repository's URL: [https://github.com/rayanate/waph-rayanate.git](https://github.com/rayanate/waph-rayanate.git)
+Repository's URL: [https://gudiseyh.github.io/](https://gudiseyh.github.io/)
 
 Yeshwanth Gudise can place all of the code in this private repository. This repository is structured as follows.
 
 # Overview and Requirements
 
-In this project, I have developed a professional website using HTML, CSS, Javascript and Bootstrap. The application has been deployed on GitHub website. Below is the URL for the portfolio website.
+In this project, I've created a professional website using HTML, CSS, Javascript, and Bootstrap. The application has been deployed on the GitHub website. Here is the URL for the portfolio website.
 
   Website's URL: [https://github.com/rayanate/rayanate.github.io](https://rayanate.github.io)
 
 ## General requirements:
 
-I have successfully crafted a professional and visually appealing resume webpage using HTML5, CSS, JavaScript, and Bootstrap. The page incorporates essential details such as my name, contact information, a professional headshot, and comprehensive sections highlighting my educational background and work experiences. The use of Bootstrap ensures a responsive and well-structured design, creating a seamless and polished presentation of my resume online.
+I have skillfully designed a professional and aesthetically pleasing resume webpage by utilizing HTML5, CSS, JavaScript, and Bootstrap. The webpage includes crucial information such as my name, contact details, a professional headshot, and comprehensive sections that showcase my educational history and work experiences. The incorporation of Bootstrap ensures that the design is responsive and well-organized, providing a smooth and refined online presentation of my resume.
 
    ![Main Page of Website - Main Secton](assets/img/screenshots/mainPage.png)
    
@@ -39,8 +39,7 @@ I have successfully crafted a professional and visually appealing resume webpage
 
 ## Non-technical requirements
 
-I have added bootstrap cdn in the HTML page and used bootstrap classes to style the elements on the page quickly. This has helped me achieve a clean and professional design without having to write extensive CSS code. 
-Below are the CDN links for bootstrap and the icons used in the project.
+I've incorporated Bootstrap CDN into my HTML page and leveraged Bootstrap classes to swiftly style the elements on the page. This approach has enabled me to attain a polished and professional design without the need for extensive CSS coding. Below, you'll find the CDN links for Bootstrap and the icons utilized in the project.
 
 ```JS
   <link
@@ -59,7 +58,7 @@ Below are the CDN links for bootstrap and the icons used in the project.
 
 ### Basic Javascript code
 
-I have used JQuery CDN in the HTML page to access the elements and performed the API calls for retrieving data from the server. This allows for dynamic updating of content without having to reload the entire page. 
+I've integrated the JQuery CDN into my HTML page to access elements and execute API calls for fetching data from the server. This enables dynamic content updates without the necessity of reloading the entire page.
 
 Below is the JQuery CDN used in the project
 ```JS
@@ -67,7 +66,9 @@ Below is the JQuery CDN used in the project
     integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 ```
 
-I have included the functionalities from Lab2 i.e. analog clock, digital clock, show/hide email, Joke API
+
+I've incorporated the functionalities from Lab2 into the project, including features like an analog clock, digital clock, the ability to show/hide email, and integration with the Joke API.
+
 1. Digital Clock
 
   ```JS
@@ -146,7 +147,8 @@ setInterval(fetchJoke, 60000);
    ![Displaying Joke for every one minute](assets/img/screenshots/jokeAPI.png)
 
 5. Public API
-   I have integrated Weather API to display weather and NASA API to display the image of the day.
+
+I've integrated the Weather API to showcase real-time weather information and the Numbers API to present random number facts on the webpage.
 
    a. Weather API - I have included graphic i.e. image of the cloud.
 
@@ -199,7 +201,7 @@ setInterval(fetchJoke, 60000);
 
 4. Javascript Cookies
 
-I have used the localstorage to store the session of the user. Below is the code snippet of the implementation.
+I've implemented user session storage using localStorage. Here is the code snippet for the implementation.
 
 ```JS
 function setCookies() {
