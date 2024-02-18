@@ -66,6 +66,26 @@ Below is the JQuery CDN used in the project
     integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 ```
 
+I have added React CDN in the HTML page to include react library in the website.
+
+```JS
+<script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+```
+
+```HTML
+<script>
+            const App = () => {
+              return React.createElement('p', null, 'Experienced developer with expertise in designing, implementing, and maintaining software solutions. Skilled in diverse programming languages and frameworks, adept at translating business requirements into efficient code. Collaborative team player with a keen eye for detail and a commitment to quality. Continuously learning and adapting to emerging technologies, dedicated to delivering user-centric solutions.');
+            };
+
+            ReactDOM.render(
+              React.createElement(App),
+              document.getElementById('root')
+            );
+          </script>
+```
+
 
 I've incorporated the functionalities from Lab2 into the project, including features like an analog clock, digital clock, the ability to show/hide email, and integration with the Joke API.
 
@@ -154,7 +174,7 @@ I've integrated the Weather API to showcase real-time weather information and th
 
       ```markdown
       async function getWeatherData(city) {
-      const apiKey = '82bf333e96f9446884281940ce9c06b1';
+      const apiKey = 'd719fc7c306d442ba48f6e1b722bcc2c';
       const apiUrl = `https://api.weatherbit.io/v2.0/current?city=${city}&key=${apiKey}`;
 
       try {
