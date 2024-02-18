@@ -14,7 +14,7 @@
 
 ## Repository Information
 
-Repository's URL: [https://gudiseyh.github.io/](https://gudiseyh.github.io/)
+Repository's URL: [https://github.com/gudiseyh/gudiseyh.github.io](https://github.com/gudiseyh/gudiseyh.github.io)
 
 Yeshwanth Gudise can place all of the code in this private repository. This repository is structured as follows.
 
@@ -22,7 +22,7 @@ Yeshwanth Gudise can place all of the code in this private repository. This repo
 
 In this project, I've created a professional website using HTML, CSS, Javascript, and Bootstrap. The application has been deployed on the GitHub website. Here is the URL for the portfolio website.
 
-  Website's URL: [https://github.com/rayanate/rayanate.github.io](https://rayanate.github.io)
+  Website's URL: [https://gudiseyh.github.io/](https://gudiseyh.github.io/)
 
 ## General requirements:
 
