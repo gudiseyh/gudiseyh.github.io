@@ -171,35 +171,35 @@ setInterval(fetchJoke, 60000);
 I've integrated the Weather API to showcase real-time weather information and the random Quote Generator to present quotes on the webpage.
 
    a. Weather API - I have included graphic i.e. image of the cloud.
+   
+```javascript
+async function getWeatherData(city) {
+  const apiKey = 'd719fc7c306d442ba48f6e1b722bcc2c';
+  const apiUrl = `https://api.weatherbit.io/v2.0/current?city=${city}&key=${apiKey}`;
+  try {
+    const response = await fetch(apiUrl);
+    const data = await response.json();
 
-      ```JS
-      
-      async function getWeatherData(city) {
-      const apiKey = 'd719fc7c306d442ba48f6e1b722bcc2c';
-      const apiUrl = `https://api.weatherbit.io/v2.0/current?city=${city}&key=${apiKey}`;
-      try {
-        const response = await fetch(apiUrl);
-        const data = await response.json();
+    document.getElementById('city').innerText = data.data[0].city_name;
+    document.getElementById('weather-icon').src = 				 
+    `https://www.weatherbit.io/static/img/icons/${data.data[0].weather.icon}.png`;
+    document.getElementById('temperature').innerText = `Temperature: ${data.data[0].temp}°C`;
+    document.getElementById('description').innerText = `Description: ${data.data[0].weather.description}`;
+  } catch (error) {
+    console.error('Error fetching weather data:', error);
+  }
+}
 
-        document.getElementById('city').innerText = data.data[0].city_name;
-        document.getElementById('weather-icon').src = `https://www.weatherbit.io/static/img/icons/${data.data[0].weather.icon}.png`;
-        document.getElementById('temperature').innerText = `Temperature: ${data.data[0].temp}°C`;
-        document.getElementById('description').innerText = `Description: ${data.data[0].weather.description}`;
-      } catch (error) {
-        console.error('Error fetching weather data:', error);
-      }
-    }
-
-    const city = 'New York'; 
-    getWeatherData(city);
-    
-    ```
+const city = 'New York'; 
+getWeatherData(city);
+```
    ![Dsplaying Weather](assets/img/screenshots/weather.png)
-      
+
+
     b. Random Quote Generator
 
-	```JS
-           function getRandomQuote() {
+```javascript
+      function getRandomQuote() {
       const apiUrl = 'https://api.quotable.io/random';
       $.get(apiUrl, function (data) {
         const quoteContainer = $('#quote');
@@ -212,7 +212,7 @@ I've integrated the Weather API to showcase real-time weather information and th
           console.error('Error:', error);
         });
     }
- 	```
+```
    ![Random Number Facts](assets/img/screenshots/randomQuote.png)
 
 
