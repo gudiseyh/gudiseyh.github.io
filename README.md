@@ -10,7 +10,7 @@
 
 **Short-bio**: Yeshwanth Gudise has a better understanding and passion towards programming. He wish to be as a software Engineer.
 
-  ![Yeshwanth's Headshot](assets/img/screenshots/yeshwanth.jpg)
+  ![Yeshwanth's Headshot](assets/img/screenshots/yeshwanth.jpeg)
 
 ## Repository Information
 
