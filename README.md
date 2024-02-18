@@ -145,7 +145,7 @@ function showhideEmail() {
 ```
    ![Show/Hide Email - Hide Email](assets/img/screenshots/about.png)
 
-   ![Show/Hide Email - Email Shown](assets/img/screenshots/HomePage3.png)
+   ![Show/Hide Email - Email Shown](assets/img/screenshots/emailShown.png)
 
 4. Joke API
 
@@ -168,15 +168,15 @@ setInterval(fetchJoke, 60000);
 
 5. Public API
 
-I've integrated the Weather API to showcase real-time weather information and the Numbers API to present random number facts on the webpage.
+I've integrated the Weather API to showcase real-time weather information and the random Quote Generator to present quotes on the webpage.
 
    a. Weather API - I have included graphic i.e. image of the cloud.
 
-      ```markdown
+      ```JS
+      
       async function getWeatherData(city) {
       const apiKey = 'd719fc7c306d442ba48f6e1b722bcc2c';
       const apiUrl = `https://api.weatherbit.io/v2.0/current?city=${city}&key=${apiKey}`;
-
       try {
         const response = await fetch(apiUrl);
         const data = await response.json();
@@ -192,31 +192,28 @@ I've integrated the Weather API to showcase real-time weather information and th
 
     const city = 'New York'; 
     getWeatherData(city);
+    
     ```
    ![Dsplaying Weather](assets/img/screenshots/weather.png)
       
-    b. Random Number Facts
+    b. Random Quote Generator
 
 	```JS
-            async function getRandomNumberFacts() {
-      try {
-        const min = 1;
-        const max = 100000;
-
-        const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
-        const response = await fetch(`http://numbersapi.com/12345`);
-        const data = await response.text();
-
-        document.getElementById('trivia').textContent = data;
-      } catch (error) {
-        console.error('Error fetching quote:', error);
-      }
+           function getRandomQuote() {
+      const apiUrl = 'https://api.quotable.io/random';
+      $.get(apiUrl, function (data) {
+        const quoteContainer = $('#quote');
+        quoteContainer.html(`
+                    <p>${data.content}</p>
+                    <p>- ${data.author}</p>
+                `);
+      })
+        .fail(function (error) {
+          console.error('Error:', error);
+        });
     }
-
-    getRandomNumberFacts();
-    setInterval(getRandomNumberFacts, 60000);
  	```
-   ![Random Number Facts](assets/img/screenshots/numbersAPI.png)
+   ![Random Number Facts](assets/img/screenshots/randomQuote.png)
 
 
 4. Javascript Cookies
