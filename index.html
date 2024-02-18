@@ -60,28 +60,26 @@
       }
     }
 
-    const city = 'New York'; 
+    const city = 'New York';
     getWeatherData(city);
 
 
-    async function getRandomNumberFacts() {
-      try {
-        const min = 1;
-        const max = 100000;
+    function getRandomQuote() {
+      const apiUrl = 'https://api.quotable.io/random';
 
-        const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
-        const response = await fetch(`http://numbersapi.com/12345`);
-        const data = await response.text();
-
-        document.getElementById('trivia').textContent = data;
-      } catch (error) {
-        console.error('Error fetching quote:', error);
-      }
+      // Use jQuery $.get to make the API request
+      $.get(apiUrl, function (data) {
+        // Display the quote on the webpage
+        const quoteContainer = $('#quote');
+        quoteContainer.html(`
+                    <p>${data.content}</p>
+                    <p>- ${data.author}</p>
+                `);
+      })
+        .fail(function (error) {
+          console.error('Error:', error);
+        });
     }
-
-    getRandomNumberFacts();
-    setInterval(getRandomNumberFacts, 60000);
-
     var shown = false;
     function showhideEmail() {
       if (shown) {
@@ -96,15 +94,17 @@
       }
     }
 
-    function setCookies() {
-      var currentDate = new Date();
-      var lastVisit = localStorage.getItem("lastVisit");
 
-      if (!lastVisit) {
-        localStorage.setItem("lastVisit", currentDate.toISOString());
+
+    function setCookies() {
+      var todayDate = new Date();
+      var lastVisitedDate = localStorage.getItem("lastVisit");
+
+      if (!lastVisitedDate) {
+        localStorage.setItem("lastVisit", todayDate.toISOString());
         alert("Welcome to my homepage!");
       } else {
-        var lastVisitDate = new Date(lastVisit);
+        var lastVisitDate = new Date(lastVisitedDate);
         alert("Welcome back! Your last visit was on " + lastVisitDate);
       }
     }
@@ -381,11 +381,11 @@
           <div id="joke-section"></div>
         </div>
         <div class="col">
-          <h4>Weather Information</h4>
+          <h3>Weather Information</h3>
           <div id="weather-container">
-            <h1>Weather App</h1>
+            <h4>Weather App</h4>
             <div id="weather-info">
-              <h2 id="city">Loading...</h2>
+              <h5 id="city">Loading...</h5>
               <img id="weather-icon" src="" alt="Weather Icon">
               <p id="temperature">Temperature: Loading...</p>
               <p id="description">Description: Loading...</p>
@@ -394,9 +394,11 @@
 
         </div>
         <div class="col" class="trivia">
-          <h1>Facts about Numbers</h1>
+          <h3>Random Quote</h1>
 
-          <pre id="trivia"></pre>
+            <button onclick="getRandomQuote()">Get Random Quote</button>
+            <h4>Quote:</h2>
+              <div id="quote"></div>
         </div>
       </div>
     </section>
