@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>MyResume Bootstrap Template - Index</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+
+  <link href="assets/css/style.css" rel="stylesheet">
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <script>
+    function fetchJoke() {
+      $.get('https://v2.jokeapi.dev/joke/Any', function (data) {
+        $('#joke-section').html(`
+        <p>${data.setup || ''}</p>
+        <p>${data.delivery || data.joke || ''}</p>
+      `);
+      }).fail(function (error) {
+        console.error('Error fetching joke:', error);
+      });
+    }
+    fetchJoke();
+
+    async function getWeatherData(city) {
+      const apiKey = '82bf333e96f9446884281940ce9c06b1'; // Replace with your actual Weatherbit API key
+      const apiUrl = `https://api.weatherbit.io/v2.0/current?city=${city}&key=${apiKey}`;
+
+      try {
+        const response = await fetch(apiUrl);
+        const data = await response.json();
+
+        document.getElementById('city').innerText = data.data[0].city_name;
+        document.getElementById('weather-icon').src = `https://www.weatherbit.io/static/img/icons/${data.data[0].weather.icon}.png`;
+        document.getElementById('temperature').innerText = `Temperature: ${data.data[0].temp}°C`;
+        document.getElementById('description').innerText = `Description: ${data.data[0].weather.description}`;
+      } catch (error) {
+        console.error('Error fetching weather data:', error);
+      }
+    }
+
+    const city = 'New York'; 
+    getWeatherData(city);
+
+
+    async function getRandomNumberFacts() {
+      try {
+        const min = 1;
+        const max = 100000;
+
+        const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+        const response = await fetch(`http://numbersapi.com/${randomNumber}`);
+        const data = await response.text();
+
+        document.getElementById('trivia').textContent = data;
+      } catch (error) {
+        console.error('Error fetching quote:', error);
+      }
+    }
+
+    getRandomNumberFacts();
+    setInterval(getRandomNumberFacts, 60000);
+
+    var shown = false;
+    function showhideEmail() {
+      if (shown) {
+        document.getElementById('email').innerHTML = "Show my email";
+        shown = false;
+      }
+      else {
+        var myemail = "<a href='mailto:gudiseyh" + "@" +
+          "mail.uc.edu'> gudiseyh" + "@" + "mail.uc.edu</a>";
+        document.getElementById('email').innerHTML = myemail;
+        shown = true;
+      }
+    }
+
+    function setCookies() {
+      var currentDate = new Date();
+      var lastVisit = localStorage.getItem("lastVisit");
+
+      if (!lastVisit) {
+        localStorage.setItem("lastVisit", currentDate.toISOString());
+        alert("Welcome to my homepage!");
+      } else {
+        var lastVisitDate = new Date(lastVisit);
+        alert("Welcome back! Your last visit was on " + lastVisitDate);
+      }
+    }
+    setCookies();
+
+  </script>
+
+</head>
+
+<body>
+
+  <i class="bi bi-list mobile-nav-toggle d-lg-none"></i>
+  <header id="header" class="d-flex flex-column justify-content-center">
+
+    <nav id="navbar" class="navbar nav-menu">
+      <ul>
+        <li><a href="#hero" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Home</span></a></li>
+        <li><a href="#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span>About</span></a></li>
+        <li><a href="#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Resume</span></a></li>
+        <li><a href="waph-course.html" class="nav-link scrollto"><i class="bx bx-code-alt"></i> <span>WAPH</span></a>
+        </li>
+        <li><a href="#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Contact</span></a></li>
+
+      </ul>
+    </nav>
+
+  </header>
+
+  <section id="hero" class="d-flex flex-column justify-content-center">
+    <div class="container" data-aos="zoom-in" data-aos-delay="100">
+      <h1>Yeshwanth Gudise</h1>
+      <p>I'm <span class="typed" data-typed-items="Full Stack Developer"></span></p>
+      <div id="digital-clock"></div>
+      <script>
+        function displayTime() {
+          document.getElementById('digital-clock').innerHTML = "Current time: " + new Date();
+        }
+        setInterval(displayTime, 500);
+      </script>
+      <div class="social-links">
+        <a href="#" class="twitter"><i class="bx bxl-github"></i></a>
+        <a href="www.linkedin.com/in/yeshwanthgudise31" class="facebook"><i class="bx bxl-linkedin"></i></a>
+        <a href="mailto:gudiseyh@mal.uc.edu" class="instagram"><i class="bx bx-envelope"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <main id="main">
+
+    <section id="about" class="about">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>About</h2>
+          <div id="root"></div>
+
+          <script>
+            const App = () => {
+              return React.createElement('p', null, 'Experienced developer with expertise in designing, implementing, and maintaining software solutions. Skilled in diverse programming languages and frameworks, adept at translating business requirements into efficient code. Collaborative team player with a keen eye for detail and a commitment to quality. Continuously learning and adapting to emerging technologies, dedicated to delivering user-centric solutions.');
+            };
+
+            ReactDOM.render(
+              React.createElement(App),
+              document.getElementById('root')
+            );
+          </script>
+
+        </div>
+
+        <div class="row">
+          <div class="col-lg-4">
+            <img src="assets/img/profile-img.jpg" class="img-fluid" alt="" width="350" height="100">
+          </div>
+          <div class="col-lg-8 pt-4 pt-lg-0 content">
+            <h3>Full Stack Developer</h3>
+
+            <div class="details">
+              <div class="row">
+                <div class="col">
+                  <ul>
+                    <li><i class="bi bi-chevron-right"></i> <strong>Phone:</strong> <span>+1 (513) 799-3503</span></li>
+                    <li><i class="bi bi-chevron-right"></i> <strong>City:</strong> <span>Cincinnati, OH, USA</span></li>
+                    <li><i class="bi bi-chevron-right"></i> <strong>LinkedIn:</strong>
+                      <span>www.linkedin.com/in/yeshwanthgudise31</span>
+                    </li>
+                    <li><i class="bi bi-chevron-right"></i> <strong>Email:</strong> <span id="email"
+                        onClick="showhideEmail()">Show my email
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="skills" class="skills section-bg">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Skills</h2>
+        </div>
+
+        <div class="row skills-content">
+
+          <div class="col-lg-6">
+
+            <div class="progress">
+              <span class="skill">HTML <i class="val">100%</i></span>
+              <div class="progress-bar-wrap">
+                <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+                </div>
+              </div>
+            </div>
+
+            <div class="progress">
+              <span class="skill">CSS <i class="val">90%</i></span>
+              <div class="progress-bar-wrap">
+                <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
+                </div>
+              </div>
+            </div>
+
+            <div class="progress">
+              <span class="skill">JavaScript <i class="val">75%</i></span>
+              <div class="progress-bar-wrap">
+                <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="col-lg-6">
+
+            <div class="progress">
+              <span class="skill">JAVA <i class="val">80%</i></span>
+              <div class="progress-bar-wrap">
+                <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
+                </div>
+              </div>
+            </div>
+
+            <div class="progress">
+              <span class="skill">MySQL <i class="val">90%</i></span>
+              <div class="progress-bar-wrap">
+                <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
+                </div>
+              </div>
+            </div>
+
+            <div class="progress">
+              <span class="skill">Data Structures & Algorithms<i class="val">55%</i></span>
+              <div class="progress-bar-wrap">
+                <div class="progress-bar" role="progressbar" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100">
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <section id="resume" class="resume">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Resume</h2>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-6">
+            <h3 class="resume-title">Sumary</h3>
+            <div class="resume-item pb-0">
+              <h4>Yeshwanth Gudise</h4>
+              <p><em>Innovative and deadline-driven Developer with 1.5 years of experience developing web
+                  applications.</em></p>
+              <ul>
+                <li>Cincinnati, OH, USAL</li>
+                <li>+1 (513) 799-3503</li>
+                <li>gudiseyh@mail.uc.edu</li>
+              </ul>
+            </div>
+
+            <h3 class="resume-title">Education</h3>
+            <div class="resume-item">
+              <h4>Master of Science in Information Technology</h4>
+              <h5>Aug 2023 – Dec 2024</h5>
+              <p><em>University of Cincinnati, Cincinnat, OH</em></p>
+              <p><strong>Coursework:</strong> Technology for Mobile Applications, Topics in computer systems (includes
+                HTML,CSS, JAVA SCRIPT,
+                Frontend and Backend Technologies), Advanced Storage Technology, Infrastructure Sustainability,
+                Principles of Cyber
+                security and Data driven Cyber security, Professional Development</p>
+            </div>
+            <div class="resume-item">
+              <h4>Bachelor of Technology in Civil Engineering</h4>
+              <h5>Aug 2017 – July 2021</h5>
+              <p><em>JNTUH College of Engineering, Hyderabad, India</em></p>
+              <p><strong>Coursework:</strong> C, Java, Data Structures</p>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <h3 class="resume-title">Professional Experience</h3>
+            <div class="resume-item">
+              <h4>Systems Engineer</h4>
+              <h5>Feb 2022 – Aug 2023</h5>
+              <p><em>Hyderabad, Telangana, India </em></p>
+              <ul>
+                <li>Applied agile methodologies in the software development life cycle, collaborating with the product
+                  team to deliver new features that met company requirements.</li>
+                <li>Utilized JavaScript, HTML5, CSS3, and React.js to create over 10 visually appealing UI screens,
+                  maintaining a user satisfaction rate of 85% or higher.</li>
+                <li>Engineered 2 robust APIs in Node.js, significantly enhancing server-side functionality and ensuring
+                  a responsive user experience.</li>
+                <li>Led the successful migration of 10+ tables and schemas from MySQL, achieving a 91% accuracy rate and
+                  minimizing disruptions to ongoing projects.</li>
+              </ul>
+            </div>
+            <div class="resume-item">
+              <h4>Academic Projects - JobHubPro</h4>
+              <h5>2017 - 2018</h5>
+              <p><em>JNTUH, Hyderabad, India</em></p>
+              <ul>
+                <li>Played a key role in designing the Flexible Hiring Marketplace, developing a streamlined full-stack
+                  job platform
+                  that simplifies the employment process for both recruiters and candidates. </li>
+                <li>Recruiters benefit from easy profile creation, sophisticated filtering, and interview scheduling,
+                  while job seekers
+                  enjoy a seamless registration process for applying to desired openings</li>
+
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+    <section class="analog">
+      <h3>Analog Clock</h3>
+      <div class="h-100 d-flex justify-content-center">
+        <canvas id="analog-clock" width="150" height="150" style="background-color:#999"></canvas>
+        <script src="https://waph-uc.github.io/clock.js"></script>
+        <script>
+          var canvas = document.getElementById("analog-clock");
+          var ctx = canvas.getContext("2d");
+
+          var radius = canvas.height / 2;
+          ctx.translate(radius, radius);
+          radius = radius * 0.90;
+          setInterval(drawClock, 1000);
+
+          function drawClock() {
+            drawFace(ctx, radius);
+            drawNumbers(ctx, radius);
+            drawTime(ctx, radius);
+          }
+        </script>
+      </div>
+
+    </section>
+
+    <section class="apis">
+      <div class="row">
+        <div class="col">
+          <h3>JOKE API</h3>
+          <div id="joke-section"></div>
+        </div>
+        <div class="col">
+          <h4>Weather Information</h4>
+          <div id="weather-container">
+            <h1>Weather App</h1>
+            <div id="weather-info">
+              <h2 id="city">Loading...</h2>
+              <img id="weather-icon" src="" alt="Weather Icon">
+              <p id="temperature">Temperature: Loading...</p>
+              <p id="description">Description: Loading...</p>
+            </div>
+          </div>
+
+        </div>
+        <div class="col" class="trivia">
+          <h1>Facts about Numbers</h1>
+
+          <pre id="trivia"></pre>
+        </div>
+      </div>
+    </section>
+    <section id="contact" class="contact">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Contact</h2>
+        </div>
+        <div class="row mt-1">
+
+          <div class="col-lg-12">
+            <div class="info">
+              <div class="address">
+                <i class="bi bi-geo-alt"></i>
+                <h4>Location:</h4>
+                <p>Cincinnati, OH, USA</p>
+              </div>
+
+
+              <div class="email">
+                <i class="bi bi-envelope"></i>
+                <h4>Email:</h4>
+                <p>gudiseyh@mail.uc.edu</p>
+              </div>
+
+              <div class="phone">
+                <i class="bi bi-phone"></i>
+                <h4>Call:</h4>
+                <p>+1 (513) 799-3503</p>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer id="footer">
+    <div class="container">
+      <h3>Yeshwanth Gudise</h3>
+      <div class="social-links">
+        <a href="#" class="twitter"><i class="bx bxl-github"></i></a>
+        <a href="#" class="facebook"><i class="bx bxl-linkedin"></i></a>
+        <a href="#" class="instagram"><i class="bx bi-phone"></i></a>
+        <a href="#" class="google-plus"><i class="bx bx-envelope"></i></a>
+      </div>
+      <div class="copyright">
+        &copy; Copyright <strong><span>Yeshwanth Gudise</span></strong>. All Rights Reserved
+      </div>
+
+    </div>
+  </footer>
+
+  <div id="preloader"></div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/typed.js/typed.umd.js"></script>
+  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
